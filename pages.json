@@ -1,0 +1,56 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+            "path" : "pages/welcome/welcome",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "立即拿额度",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/assessArt/assessArt",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "注册协议",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	// "tabBar": {
+	// 	"color": "#999999",
+	// 	"selectedColor": "#4579E6",
+	// 	"backgroundColor": "#FFFFFF",
+	// 	// #ifdef APP-PLUS
+	// 	"borderStyle": "#eeeeee",
+	// 	// #endif
+	// 	// #ifdef H5
+	// 	"borderStyle": "white",
+	// 	// #endif
+	// 	"list": [
+	// 		{
+	// 			"pagePath": "pages/index/index",
+	// 			"text": "首页",
+	// 			"iconPath": "static/tabIcon/home.png",
+	// 			"selectedIconPath": "static/tabIcon/home_select.png"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/mine/mine",
+	// 			"text": "我的",
+	// 			"iconPath": "static/tabIcon/center.png",
+	// 			"selectedIconPath": "static/tabIcon/center_select.png"
+	// 		}
+	// 	]
+	// },
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "牟财",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"easycom": {
+		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	}
+}
