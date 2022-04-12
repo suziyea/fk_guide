@@ -42,9 +42,12 @@
 			<text>
 				资金来源于合规持牌机构
 			</text>
-			<text>
-				{{`版权所有 沪ICP 2020016号`}}
-			</text>
+			<navigator url='/pages/webview/webview?urlPath=https://beian.miit.gov.cn/#/Integrated/index'>
+				<text @click="jumpCompany">
+					{{`沪ICP 备2021036878号-1`}}
+				</text>
+			</navigator>
+
 		</view>
 
 	</view>
@@ -123,6 +126,9 @@
 					return;
 				}
 			},
+			jumpCompany() {
+
+			}
 		}
 	}
 </script>
@@ -133,6 +139,7 @@
 		height: 100vh;
 		background: #FFFFFF;
 		box-sizing: border-box;
+
 		.bg_banner {
 			width: 100%;
 			height: 440rpx;

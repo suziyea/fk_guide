@@ -1,24 +1,30 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-            "path" : "pages/welcome/welcome",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "立即拿额度",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/assessArt/assessArt",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "注册协议",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+			"path": "pages/welcome/welcome",
+			"style": {
+				"navigationBarTitleText": "立即拿额度",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/assessArt/assessArt",
+			"style": {
+				"navigationBarTitleText": "注册协议",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+			"path": "pages/webview/webview",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+
+		}
+	],
 	// "tabBar": {
 	// 	"color": "#999999",
 	// 	"selectedColor": "#4579E6",
