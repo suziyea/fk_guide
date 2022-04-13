@@ -25,13 +25,12 @@
 			</view>
 
 			<view class="notice">
-									<u-checkbox-group>
-	<u-checkbox v-model="selectRadio" @change="checkboxChange"></u-checkbox><text class="read_tip">注册即表明您已经同意<text class="blue"
-						@click="jumpContent('register')">{{` 《注册协议》 `}}</text>和<text class="blue"
-						@click="jumpContent('hide')">{{` 《隐私协议》 `}}</text></text>
-</u-checkbox-group>
-
-
+				<u-checkbox-group>
+					<u-checkbox v-model="selectRadio" @change="checkboxChange"></u-checkbox><text
+						class="read_tip">注册即表明您已经同意<text class="blue"
+							@click="jumpContent('register')">{{` 《注册协议》 `}}</text>和<text class="blue"
+							@click="jumpContent('hide')">{{` 《隐私协议》 `}}</text></text>
+				</u-checkbox-group>
 			</view>
 
 
@@ -60,11 +59,13 @@
 <script>
 	import {
 		register,
+		addDrainage
 	} from "@/config/api/user.js"
 	export default {
 		data() {
 			return {
 				selectRadio: false,
+				channel_code: '',
 				formContent: {
 					phone: ''
 				},
@@ -90,29 +91,59 @@
 				}
 			}
 		},
+		onLoad() {
+			// this.loadmore()
+			let routes = getCurrentPages();
+			let curRoute = routes[routes.length - 1].route //获取当前页面路由
+			let curParam = routes[routes.length - 1].options; //获取路由参数
+
+			let keys = Object.keys(curParam); //获取对象的key 返回对象key的数组
+			if (keys.length >= 1) {
+				if (curParam.source) {
+					this.channel_code = curParam.source
+					addDrainage({
+							source: curParam.source
+						}).then((res) => {
+							if (res.code === 100000) {
+								// 这里此提示会被this.start()方法中的提示覆盖
+								console.log('引流', res)
+							}
+
+						})
+						.catch((err) => {
+							uni.showToast({
+								icon: "none",
+								title: err.msg || "请稍后再试",
+							});
+						});
+				}
+			}
+			console.log(curRoute, '你好啊', keys, curParam)
+		},
+
 		methods: {
 			checkboxChange(n) {
 				this.selectRadio = n
-				console.log('change', n);
 			},
 			clickSubmit() {
 				if (this.selectRadio) {
 					uni.$u.debounce(this.submit, 500)
 					return;
 				}
-				uni.$u.toast('请勾选同意')
+				uni.$u.toast('请您阅读协议并勾选同意')
 			},
 			submit() {
 				this.$refs.uForm.validate().then(res => {
 					register({
 							"phone": this.formContent.phone,
-							"channel_code": "1000"
+							"channel_code": this.channel_code
 						})
 						.then((res) => {
 							if (res.code === 100000) {
 								// 这里此提示会被this.start()方法中的提示覆盖
 								uni.$u.toast('注册成功');
-								this.formContent.phone = ''
+								this.selectRadio = '';
+								this.formContent.phone = '';
 							}
 
 						})
@@ -123,6 +154,7 @@
 							});
 						});
 				}).catch(errors => {
+					console.log(errors)
 					uni.$u.toast('手机号码不正确')
 				})
 
@@ -130,12 +162,12 @@
 			},
 			jumpContent(val) {
 				if (val === 'register') {
-					uni.$u.route('/pages/assessArt/assessArt')
+					uni.$u.route('/subpages/registerAgreem/registerAgreem')
 					return;
 				}
 
 				if (val === 'hide') {
-					uni.$u.route('/pages/assessArt/assessArt')
+					uni.$u.route('/subpages/appPrivacyAgreement/appPrivacyAgreement')
 					return;
 				}
 			},
@@ -149,7 +181,7 @@
 <style lang="scss" scoped>
 	.container {
 		width: 100%;
-min-height: 100vh;
+		min-height: 100vh;
 		background: #FFFFFF;
 		box-sizing: border-box;
 

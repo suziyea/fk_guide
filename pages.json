@@ -1,13 +1,14 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/welcome/welcome",
-			"style": {
-				"navigationBarTitleText": "立即拿额度",
-				"enablePullDownRefresh": false
-			}
-
-		},
+	{
+		"path": "pages/welcome/welcome",
+		"style": {
+			"navigationBarTitleText": "立即拿额度",
+			"navigationStyle": "custom",
+			"enablePullDownRefresh": false
+		}
+	},
+		
 		{
 			"path": "pages/webview/webview",
 			"style": {
@@ -16,22 +17,26 @@
 				"enablePullDownRefresh": false
 			}
 
-		}, {
-			"path": "subpages/registerAgreem/registerAgreem",
+		}
+	],
+	"subPackages": [{
+		"root": "subpages",
+		"pages": [{
+			"path": "registerAgreem/registerAgreem",
 			"style": {
 				"navigationBarTitleText": "注册协议",
 				"enablePullDownRefresh": false
 			}
 
 		}, {
-			"path": "subpages/appPrivacyAgreement/appPrivacyAgreement",
+			"path": "appPrivacyAgreement/appPrivacyAgreement",
 			"style": {
 				"navigationBarTitleText": "隐私协议",
 				"enablePullDownRefresh": false
 			}
 
-		}
-	],
+		}]
+	}],
 	// "tabBar": {
 	// 	"color": "#999999",
 	// 	"selectedColor": "#4579E6",
