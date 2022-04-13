@@ -9,6 +9,6 @@ export const register = (params, config = {}) => {
 export const sendSMS = (params, config = {}) => http.post('/api/public/sms/send', params, config)
 
 // get请求
-export const addDrainage = (data) => http.get('/api/fk/channel/drainage', {
+export const addDrainage = (data) => http.get('/api/public/channel/drainage', {
 	params: data
 })
