@@ -25,9 +25,13 @@
 			</view>
 
 			<view class="notice">
-				<text class="read_tip">注册即表明您已经同意<text class="blue"
+									<u-checkbox-group>
+	<u-checkbox v-model="selectRadio" @change="checkboxChange"></u-checkbox><text class="read_tip">注册即表明您已经同意<text class="blue"
 						@click="jumpContent('register')">{{` 《注册协议》 `}}</text>和<text class="blue"
 						@click="jumpContent('hide')">{{` 《隐私协议》 `}}</text></text>
+</u-checkbox-group>
+
+
 			</view>
 
 
@@ -60,6 +64,7 @@
 	export default {
 		data() {
 			return {
+				selectRadio: false,
 				formContent: {
 					phone: ''
 				},
@@ -86,8 +91,16 @@
 			}
 		},
 		methods: {
+			checkboxChange(n) {
+				this.selectRadio = n
+				console.log('change', n);
+			},
 			clickSubmit() {
-				uni.$u.debounce(this.submit, 500)
+				if (this.selectRadio) {
+					uni.$u.debounce(this.submit, 500)
+					return;
+				}
+				uni.$u.toast('请勾选同意')
 			},
 			submit() {
 				this.$refs.uForm.validate().then(res => {
@@ -136,7 +149,7 @@
 <style lang="scss" scoped>
 	.container {
 		width: 100%;
-		height: 100vh;
+min-height: 100vh;
 		background: #FFFFFF;
 		box-sizing: border-box;
 

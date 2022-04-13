@@ -7,19 +7,26 @@
 				"enablePullDownRefresh": false
 			}
 
-		}, {
-			"path": "pages/assessArt/assessArt",
-			"style": {
-				"navigationBarTitleText": "注册协议",
-				"enablePullDownRefresh": false
-			}
-
 		},
 		{
 			"path": "pages/webview/webview",
 			"style": {
 				"navigationBarTitleText": "",
 				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "subpages/registerAgreem/registerAgreem",
+			"style": {
+				"navigationBarTitleText": "注册协议",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "subpages/appPrivacyAgreement/appPrivacyAgreement",
+			"style": {
+				"navigationBarTitleText": "隐私协议",
 				"enablePullDownRefresh": false
 			}
 
