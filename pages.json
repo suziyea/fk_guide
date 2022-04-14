@@ -25,6 +25,7 @@
 			"path": "registerAgreem/registerAgreem",
 			"style": {
 				"navigationBarTitleText": "注册协议",
+				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
 
@@ -32,6 +33,7 @@
 			"path": "appPrivacyAgreement/appPrivacyAgreement",
 			"style": {
 				"navigationBarTitleText": "隐私协议",
+				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
 
