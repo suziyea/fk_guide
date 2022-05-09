@@ -1,8 +1,8 @@
 {
-    "name" : "牟财引导页",
+    "name" : "牟财",
     "appid" : "__UNI__0159B96",
-    "description" : "测试项目",
-    "versionName" : "1.0.0",
+    "description" : "项目更新",
+    "versionName" : "1.0.1",
     "versionCode" : "100",
     "transformPx" : false,
     /* 5+App特有相关 */

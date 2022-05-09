@@ -24,13 +24,11 @@
 				</u-button>
 			</view>
 
-			<view class="notice">
-				<u-checkbox-group>
-					<u-checkbox v-model="selectRadio" @change="checkboxChange"></u-checkbox><text
-						class="read_tip">注册即表明您已经同意<text class="blue"
-							@click="jumpContent('register')">{{` 《注册协议》 `}}</text>和<text class="blue"
-							@click="jumpContent('hide')">{{` 《隐私协议》 `}}</text></text>
-				</u-checkbox-group>
+			<view class="notice u-flex  u-flex-items-center">
+				<view :class="[!selectRadio ? 'icon-this-option' : 'icon-has-checked']" @click="checkboxChange"></view>
+				<text class="read_tip">注册即表明您已经同意<text class="blue"
+						@click="jumpContent('register')">{{` 《注册协议》 `}}</text>和<text class="blue"
+						@click="jumpContent('hide')">{{` 《隐私协议》 `}}</text></text>
 			</view>
 
 
@@ -118,12 +116,11 @@
 						});
 				}
 			}
-			console.log(curRoute, '你好啊', keys, curParam)
 		},
 
 		methods: {
-			checkboxChange(n) {
-				this.selectRadio = n
+			checkboxChange() {
+				this.selectRadio = !this.selectRadio
 			},
 			clickSubmit() {
 				if (this.selectRadio) {
@@ -228,6 +225,7 @@
 				margin-top: 40rpx;
 
 				.read_tip {
+					margin-left: 20rpx;
 					width: 600rpx;
 					height: 34rpx;
 					font-size: 24rpx;
@@ -253,5 +251,20 @@
 			color: #414141;
 			line-height: 34rpx;
 		}
+	}
+
+	.icon-has-checked {
+		width: 44rpx;
+		height: 44rpx;
+		background: url(../../static/img/checked.png) no-repeat;
+		;
+		background-size: cover;
+	}
+
+	.icon-this-option {
+		width: 44rpx;
+		height: 44rpx;
+		background: url(../../static/img/noChecked.png) no-repeat;
+		background-size: cover;
 	}
 </style>
