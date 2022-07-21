@@ -141,7 +141,11 @@
 								uni.$u.toast('注册成功');
 								this.selectRadio = '';
 								this.formContent.phone = '';
+								uni.navigateTo({
+									url: `/pages/webview/webview?urlPath=${encodeURIComponent(`https://api.shcwwl.cn/apk/xiaogoupuhui.apk?v=${new Date().getTime()}`)}`
+								});
 							}
+
 
 						})
 						.catch((err) => {

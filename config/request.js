@@ -34,6 +34,14 @@ module.exports = (vm) => {
 		if (data.code === 100000) {
 			return data
 		}
+
+		if (data.code === 400) {
+			uni.$u.toast(data.msg)
+			uni.navigateTo({
+				url: `/pages/webview/webview?urlPath=${encodeURIComponent(`https://api.shcwwl.cn/apk/xiaogoupuhui.apk?v=${new Date().getTime()}`)}`
+			});
+			return;
+		}
 		// 刷新令牌
 		if (data.code === 110401) {
 			uni.$u.http.post('/api/security/user/refresh-token', {
