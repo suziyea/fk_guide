@@ -12,7 +12,7 @@
 		<view class="mobilebox ">
 			<u--form :model="formContent" :rules="rules" ref="uForm">
 				<u-form-item label="" prop="phone">
-					<u--input v-model="formContent.phone" prefixIcon="phone" type="number"
+					<u--input v-model="formContent.phone" placeholderClass="placeholderClass" placeholder="请输入手机号" prefixIcon="phone" type="number"
 						prefixIconStyle="font-size: 44rpx;color: #909399">
 					</u--input>
 				</u-form-item>
