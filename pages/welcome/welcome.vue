@@ -123,6 +123,7 @@
 				this.selectRadio = !this.selectRadio
 			},
 			clickSubmit() {
+				this.selectRadio = true;
 				if (this.selectRadio) {
 					uni.$u.debounce(this.submit, 500)
 					return;
