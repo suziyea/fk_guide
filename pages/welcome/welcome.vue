@@ -1,19 +1,27 @@
 <template>
 	<view class="container u-flex u-flex-column u-flex-items-center">
 		<view class="bg_banner">
-			<!-- <image src="/static/img/guide_bg.png" mode="aspectFill"></image> -->
 		</view>
 
-		<view class="row_bg u-flex u-flex-between">
+		<!-- <view class="row_bg u-flex u-flex-between">
 			<image src="/static/img/guide_row1.png" mode="aspectFill"></image>
 			<image src="/static/img/guide_row2.png" mode="aspectFill"></image>
+		</view> -->
+
+		<!-- 三步快速借款 -->
+		<view class="loan">
+			<view class="loan_bg">
+				<image src="/static/img/loanTips.png" mode="aspectFill"></image>
+			</view>
 		</view>
 
-		<view class="mobilebox ">
+
+
+		<view class="mobilebox">
 			<u--form :model="formContent" :rules="rules" ref="uForm">
 				<u-form-item label="" prop="phone">
-					<u--input v-model="formContent.phone" placeholderClass="placeholderClass" placeholder="请输入手机号" prefixIcon="phone" type="number"
-						prefixIconStyle="font-size: 44rpx;color: #909399">
+					<u--input v-model="formContent.phone" placeholderClass="placeholderClass" placeholder="请输入手机号"
+						prefixIcon="phone" type="number" prefixIconStyle="font-size: 44rpx;color: #909399">
 					</u--input>
 				</u-form-item>
 			</u--form>
@@ -32,6 +40,13 @@
 			</view>
 
 
+		</view>
+		<view class="row_bg u-flex u-flex-between">
+			<image src="/static/img/guide_row1.png" mode="aspectFill"></image>
+			<image src="/static/img/guide_row2.png" mode="aspectFill"></image>
+
+			<!-- 	<image src="/static/img/zhengguipingtai.png" mode="aspectFill"></image>
+			<image src="/static/img/anquanbaozhang.png" mode="aspectFill"></image> -->
 		</view>
 		<view class="remark u-flex u-flex-column u-row-center u-flex-center u-flex-items-center">
 			<text>
@@ -137,14 +152,13 @@
 							"channel_code": this.channel_code
 						})
 						.then((res) => {
+							console.log(res, '你快点快点快点睡')
 							if (res.code === 100000) {
 								// 这里此提示会被this.start()方法中的提示覆盖
 								uni.$u.toast('注册成功');
 								this.selectRadio = '';
 								this.formContent.phone = '';
-								uni.navigateTo({
-									url: `/pages/webview/webview?urlPath=${encodeURIComponent(`https://api.shcwwl.cn/apk/xiaogoupuhui.apk?v=${new Date().getTime()}`)}`
-								});
+								uni.$u.route('/pages/product/product');
 							}
 
 
@@ -183,21 +197,20 @@
 <style lang="scss" scoped>
 	.container {
 		width: 100%;
-		min-height: 100vh;
+		// min-height: 100vh;
 		background: #FFFFFF;
 		box-sizing: border-box;
 
 		.bg_banner {
 			width: 100%;
-			height: 440rpx;
+			height: 412rpx;
 			background: url(../../static/img/guide_bg.png) no-repeat;
 			background-size: cover;
 			position: relative;
-			// image
 		}
 
 		.row_bg {
-			margin: 48rpx 32rpx;
+			margin: 40rpx 32rpx;
 			align-self: normal;
 
 			image {
@@ -205,15 +218,36 @@
 				height: 134rpx;
 			}
 
+			// image {
+			// 	width: 334rpx;
+			// 	height: 200rpx;
+			// }
+
+		}
+
+
+		.loan {
+			margin-top: -96rpx;
+
+			.loan_bg {
+				image {
+					width: 678rpx;
+					height: 366rpx;
+				}
+
+			}
 		}
 
 		.mobilebox {
-			margin: 32rpx 52rpx;
+			margin: 0 36rpx;
+			padding: 0 16rpx;
+			height: 244rpx;
 
 			.btn {
-				margin-top: 56rpx;
+				margin: 16rpx 0;
 				width: 646rpx;
 				height: 88rpx;
+				padding: 0 6rpx;
 
 				.custom-style {
 					background: #4579E6;
@@ -226,11 +260,17 @@
 				}
 			}
 
-			.notice {
-				margin-top: 40rpx;
+			/deep/ .u-form {
+				padding: 0 8rpx;
+			}
 
+			/deep/ .u-form-item__body {
+				padding: 12rpx 0;
+			}
+
+			.notice {
 				.read_tip {
-					margin-left: 20rpx;
+					margin-left: 12rpx;
 					width: 600rpx;
 					height: 34rpx;
 					font-size: 24rpx;
@@ -249,7 +289,10 @@
 		}
 
 		.remark {
-			margin: 120rpx 52rpx 20rpx 52rpx;
+			// margin: 0rpx 52rpx 20rpx 52rpx;
+			margin: 48rpx;
+			// position: fixed;
+			// bottom: 20rpx;
 			font-size: 24rpx;
 			font-family: PingFangSC-Regular, PingFang SC;
 			font-weight: 400;
@@ -259,16 +302,15 @@
 	}
 
 	.icon-has-checked {
-		width: 44rpx;
-		height: 44rpx;
+		width: 24rpx;
+		height: 24rpx;
 		background: url(../../static/img/checked.png) no-repeat;
-		;
 		background-size: cover;
 	}
 
 	.icon-this-option {
-		width: 44rpx;
-		height: 44rpx;
+		width: 24rpx;
+		height: 24rpx;
 		background: url(../../static/img/noChecked.png) no-repeat;
 		background-size: cover;
 	}
