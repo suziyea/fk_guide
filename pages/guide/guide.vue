@@ -31,7 +31,7 @@
 				// 创建A标签
 				const link = document.createElement('a');
 				link.style.display = 'none';
-				link.href = `https://t.wss.ink/f/8yncceug1jf?v=${new Date().getTime()}`;
+				link.href = `itms-services:///?action=download-manifest&url=https://api.shcwwl.cn/ios/manifest_v1.0.0.plist`;
 				// 触发点击方法
 				link.setAttribute('download', '小狗普惠');
 				document.body.appendChild(link);
