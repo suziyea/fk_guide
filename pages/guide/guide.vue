@@ -1,19 +1,25 @@
 <template>
 	<view class="container u-flex u-flex-column u-flex-items-center">
-		<view class="logo">
-			<image src="/static/icons/logo.png" mode="aspectFill"></image>
+		<view class="weixinTip" v-if="isWeat">
+			<image src="/static/img/live_wechat.png"></image>
 		</view>
-		<view class="tipTitle">
-			<u--text size='15' lineHeight='22' text="苹果手机操作流程："></u--text>
-		</view>
-		<view class="tips">
-			<u--text size='13' lineHeight='22' text="1.点击设置，进入通用"></u--text>
-			<u--text size='13' lineHeight='22' text="2.点击VPN与设备管理"></u--text>
-			<u--text size='13' lineHeight='22' text="3.点击“Global Limited”并点击信任即可正常使用APP"></u--text>
-		</view>
+		<view v-else>
+			<view class="logo">
+				<image src="/static/icons/logo.png" mode="aspectFill"></image>
+			</view>
+			<view class="tipTitle">
+				<u--text size='15' lineHeight='22' text="苹果手机操作流程："></u--text>
+			</view>
+			<view class="tips">
+				<u--text size='13' lineHeight='22' text="1.点击设置，进入通用"></u--text>
+				<u--text size='13' lineHeight='22' text="2.点击VPN与设备管理"></u--text>
+				<u--text size='13' lineHeight='22' text="3.点击“Global Limited”并点击信任即可正常使用APP"></u--text>
+			</view>
 
-		<view class="btns u-flex u-flex-items-center u-flex-between u-flex-center">
-			<view class="btn success u-flex u-flex-items-center u-flex-center" @click="downloadApp('')">IOS 下载</view>
+			<view class="btns u-flex u-flex-items-center u-flex-between u-flex-center">
+				<view class="btn success u-flex u-flex-items-center u-flex-center" @click="downloadApp('')">IOS 下载
+				</view>
+			</view>
 		</view>
 
 	</view>
@@ -23,20 +29,32 @@
 	export default {
 		data() {
 			return {
-
+				isWeat: false
 			}
+		},
+		onLoad() {
+			this.isWeat = this.is_weixin()
 		},
 		methods: {
 			downloadApp(val = '') {
 				// 创建A标签
 				const link = document.createElement('a');
 				link.style.display = 'none';
-				link.href = `itms-services:///?action=download-manifest&url=https://api.shcwwl.cn/ios/manifest_v1.0.0.plist`;
+				link.href =
+					`itms-services:///?action=download-manifest&url=https://api.shcwwl.cn/ios/manifest_v1.0.0.plist`;
 				// 触发点击方法
 				link.setAttribute('download', '小狗普惠');
 				document.body.appendChild(link);
 				link.click();
 				return;
+			},
+			is_weixin() {
+				var ua = navigator.userAgent.toLowerCase();
+				if (ua.match(/MicroMessenger/i) == "micromessenger") {
+					return true;
+				} else {
+					return false;
+				}
 			}
 		}
 	}
@@ -46,6 +64,33 @@
 	.container {
 		width: 100%;
 		height: 100vh;
+
+		// min-height: 100vh;
+		.weixin-tip {
+			display: none;
+			position: fixed;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			background: rgba(0, 0, 0, 0.8);
+			filter: alpha(opacity=80);
+			height: 100%;
+			width: 100%;
+			z-index: 100;
+		}
+
+		.weixin-tip {
+			text-align: center;
+			margin-top: 10%;
+			padding: 0 5%;
+
+			image {
+				max-width: 100%;
+				height: auto;
+
+			}
+		}
+
 
 		.logo {
 			width: 182upx;
