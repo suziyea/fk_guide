@@ -28,21 +28,20 @@ module.exports = (vm) => {
 	uni.$u.http.interceptors.response.use((response) => {
 		/* 对响应成功做点什么 可使用async await 做异步操作*/
 		const data = response.data
-		console.log(response, '和您详细了解')
 		// 自定义参数
 		const custom = response.config?.custom
-		if (data.code === 100000) {
+		if (data.code === 100000 || data.code === 110404) {
 			return data
 		}
 
-		if (data.code === 110404) {
-			uni.$u.toast(data.msg)
-			// uni.navigateTo({
-			// 	url: `/pages/webview/webview?urlPath=${encodeURIComponent(`https://api.shcwwl.cn/apk/xiaogoupuhui.apk?v=${new Date().getTime()}`)}`
-			// });
-			uni.$u.route('/pages/product/product');
-			return data;
-		}
+		// if (data.code === 110404) {
+		// 	uni.$u.toast(data.msg)
+		// 	// uni.navigateTo({
+		// 	// 	url: `/pages/webview/webview?urlPath=${encodeURIComponent(`https://api.shcwwl.cn/apk/xiaogoupuhui.apk?v=${new Date().getTime()}`)}`
+		// 	// });
+		// 	uni.$u.route('/pages/product/product');
+		// 	return data;
+		// }
 		// 刷新令牌
 		if (data.code === 110401) {
 			uni.$u.http.post('/api/security/user/refresh-token', {

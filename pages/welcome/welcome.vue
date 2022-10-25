@@ -1,71 +1,84 @@
 <template>
-	<view class="container u-flex u-flex-column u-flex-items-center">
-		<view class="bg_banner">
-		</view>
-
-		<!-- <view class="row_bg u-flex u-flex-between">
-			<image src="/static/img/guide_row1.png" mode="aspectFill"></image>
-			<image src="/static/img/guide_row2.png" mode="aspectFill"></image>
-		</view> -->
-
-		<!-- 三步快速借款 -->
-		<view class="loan">
-			<view class="loan_bg">
-				<image src="/static/img/loanTips.png" mode="aspectFill"></image>
+<view class="wechatImg" v-if="isWeat">
+      <image src="/static/img/guide/isWechat.jpeg"></image>
+    </view>
+	<view class="container u-flex u-flex-column u-flex-items-center" v-else>
+		<template>
+			<view class="bg_banner">
 			</view>
-		</view>
+			<!-- <view class="row_bg u-flex u-flex-between">
+				<image src="/static/img/guide_row1.png" mode="aspectFill"></image>
+				<image src="/static/img/guide_row2.png" mode="aspectFill"></image>
+			</view> -->
 
-
-
-		<view class="mobilebox">
-			<u--form :model="formContent" :rules="rules" ref="uForm">
-				<u-form-item label="" prop="phone">
-					<u--input v-model="formContent.phone" placeholderClass="placeholderClass" placeholder="请输入手机号"
-						prefixIcon="phone" type="number" prefixIconStyle="font-size: 44rpx;color: #909399">
-					</u--input>
-				</u-form-item>
-			</u--form>
-
-			<view class="btn">
-				<u-button type="primary" :plain="true" class="custom-style" @click="clickSubmit" :hairline="true"
-					text="立即拿额度">
-				</u-button>
+			<!-- 三步快速借款 -->
+			<view class="loan">
+				<view class="loan_bg">
+					<image src="/static/img/loanTips.png" mode="aspectFill"></image>
+				</view>
 			</view>
 
-			<view class="notice u-flex  u-flex-items-center">
-				<view :class="[!selectRadio ? 'icon-this-option' : 'icon-has-checked']" @click="checkboxChange"></view>
-				<text class="read_tip">注册即表明您已经同意<text class="blue"
-						@click="jumpContent('register')">{{` 《注册协议》 `}}</text>和<text class="blue"
-						@click="jumpContent('hide')">{{` 《隐私协议》 `}}</text></text>
+			<view class="formbox u-flex u-flex-center  u-flex-items-center">
+				<u--form :model="formContent" :rules="rules" ref="uForm">
+					<u-form-item label="" prop="phone">
+						<u--input v-model="formContent.phone" placeholderClass="placeholderClass" placeholder="请输入手机号"
+							prefixIcon="phone" type="number" prefixIconStyle="font-size: 44rpx;color: #909399">
+						</u--input>
+					</u-form-item>
+				</u--form>
+				<!-- <view class="form"></view> -->
 			</view>
 
+			<view class="mobilebox">
+<!-- 					<u--form :model="formContent" :rules="rules" ref="uForm">
+					<u-form-item label="" prop="phone">
+						<u--input v-model="formContent.phone" placeholderClass="placeholderClass" placeholder="请输入手机号"
+							prefixIcon="phone" type="number" prefixIconStyle="font-size: 44rpx;color: #909399">
+						</u--input>
+					</u-form-item>
+				</u--form> -->
+				<view class="btn">
+					<u-button type="primary" :plain="true" class="custom-style" @click="clickSubmit" :hairline="true"
+						text="立即拿额度">
+					</u-button>
+				</view>
 
-		</view>
-		<view class="row_bg u-flex u-flex-between">
-			<image src="/static/img/guide_row1.png" mode="aspectFill"></image>
-			<image src="/static/img/guide_row2.png" mode="aspectFill"></image>
+				<view class="notice u-flex  u-flex-items-center">
+					<view :class="[!selectRadio ? 'icon-this-option' : 'icon-has-checked']" @click="checkboxChange">
+					</view>
+					<text class="read_tip">注册即表明您已经同意<text class="blue"
+							@click="jumpContent('register')">{{` 《注册协议》 `}}</text>和<text class="blue"
+							@click="jumpContent('hide')">{{` 《隐私协议》 `}}</text></text>
+				</view>
 
-			<!-- 	<image src="/static/img/zhengguipingtai.png" mode="aspectFill"></image>
-			<image src="/static/img/anquanbaozhang.png" mode="aspectFill"></image> -->
-		</view>
-		<view class="remark u-flex u-flex-column u-row-center u-flex-center u-flex-items-center">
-			<text>
-				具体放款金额及放款时间视个人情况而定
-			</text>
-			<text>
-				投资有风险，借贷需谨慎
-			</text>
-			<text>
-				资金来源于合规持牌机构
-			</text>
-			<navigator url='/pages/webview/webview?urlPath=https://beian.miit.gov.cn/#/Integrated/index'>
-				<text @click="jumpCompany">
-					{{`沪ICP 备2021036878号-1`}}
+
+			</view>
+			<view class="row_bg u-flex u-flex-between">
+				<image src="/static/img/guide_row1.png" mode="aspectFill"></image>
+				<image src="/static/img/guide_row2.png" mode="aspectFill"></image>
+
+				<!-- 	<image src="/static/img/zhengguipingtai.png" mode="aspectFill"></image>
+				<image src="/static/img/anquanbaozhang.png" mode="aspectFill"></image> -->
+			</view>
+			<view class="remark u-flex u-flex-column u-row-center u-flex-center u-flex-items-center">
+				<text>
+					具体放款金额及放款时间视个人情况而定
 				</text>
-			</navigator>
+				<text>
+					投资有风险，借贷需谨慎
+				</text>
+				<text>
+					资金来源于合规持牌机构
+				</text>
+				<navigator url='/pages/webview/webview?urlPath=https://beian.miit.gov.cn/#/Integrated/index'>
+					<text @click="jumpCompany">
+						{{`沪ICP 备2021036878号-1`}}
+					</text>
+				</navigator>
 
-		</view>
+			</view>
 
+		</template>
 	</view>
 </template>
 
@@ -101,11 +114,13 @@
 							trigger: ['blur'],
 						}
 					]
-				}
+				},
+				isWeat: false
 			}
 		},
 		onLoad() {
 			// this.loadmore()
+			this.isWeat = this.is_weixin()
 			let routes = getCurrentPages();
 			let curRoute = routes[routes.length - 1].route //获取当前页面路由
 			let curParam = routes[routes.length - 1].options; //获取路由参数
@@ -152,13 +167,45 @@
 							"channel_code": this.channel_code
 						})
 						.then((res) => {
-							console.log(res, '你快点快点快点睡')
-							if (res.code === 100000) {
-								// 这里此提示会被this.start()方法中的提示覆盖
-								uni.$u.toast('注册成功');
-								this.selectRadio = '';
-								this.formContent.phone = '';
-								uni.$u.route('/pages/product/product');
+							if (res.code === 100000 || res.code === 110404) {
+								// // 这里此提示会被this.start()方法中的提示覆盖
+								// if (this.channel_code === 'a021') {
+								// 	let containerStatus = this.is_weixin()
+								// 	if (containerStatus) {
+								// 		this.isWeat = true;
+								// 	} else {
+								// 		var u = navigator.userAgent
+								// 		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+								// 		var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+								// 		console.log(isAndroid, 'isAndroid', isIOS, 'iso')
+								// 		if (isAndroid) {
+								// 			this.downloadApp('android')
+								// 		}
+								// 		if (isIOS) {
+								// 			this.downloadApp('ios')
+								// 		}
+								// 	}
+								// 	return;
+								// }
+								// uni.$u.route('/pages/product/product');
+
+
+								// 上面是原来的
+								let containerStatus = this.is_weixin()
+									if (containerStatus) {
+										this.isWeat = true;
+									} else {
+										var u = navigator.userAgent
+										var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+										var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+										console.log(isAndroid, 'isAndroid', isIOS, 'iso')
+										if (isAndroid) {
+											this.downloadApp('android')
+										}
+										if (isIOS) {
+											this.downloadApp('ios')
+										}
+									}
 							}
 
 
@@ -173,8 +220,15 @@
 					console.log(errors)
 					uni.$u.toast('手机号码不正确')
 				})
-
-
+			},
+			is_weixin() {
+				var ua = navigator.userAgent.toLowerCase();
+				console.log(ua, 'ua---')
+				if (ua.match(/MicroMessenger/i) == "micromessenger") {
+					return true;
+				} else {
+					return false;
+				}
 			},
 			jumpContent(val) {
 				if (val === 'register') {
@@ -189,12 +243,47 @@
 			},
 			jumpCompany() {
 
-			}
+			},
+			downloadApp(val = '') {
+				let href = '';
+				if (val === 'android') {
+					href = `https://api.shcwwl.cn/apk/shunxinhua.apk?v=${new Date().getTime()}`;
+				}
+				if (val === 'ios') {
+					href =
+						`itms-services:///?action=download-manifest&url=https://api.shcwwl.cn/ios/manifest_v1.0.0.plist`;
+				}
+				if (val) {
+					const link = document.createElement('a');
+					link.style.display = 'none';
+					link.href = href;
+					// 触发点击方法
+					link.setAttribute('download', '鑫顺花');
+					document.body.appendChild(link);
+					link.click();
+					return;
+				}
+			},
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+.weixinTip {
+  width: 750rpx;
+  height: 100vh;
+
+  .wechatImg {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    image {
+      width: 750rpx;
+      height: 1000rpx;
+    }
+  }
+}
 	.container {
 		width: 100%;
 		// min-height: 100vh;
@@ -217,12 +306,6 @@
 				width: 334rpx;
 				height: 134rpx;
 			}
-
-			// image {
-			// 	width: 334rpx;
-			// 	height: 200rpx;
-			// }
-
 		}
 
 
@@ -240,8 +323,9 @@
 
 		.mobilebox {
 			margin: 0 36rpx;
-			padding: 0 16rpx;
-			height: 244rpx;
+			// padding: 0 16rpx;
+			// height: 244rpx;
+			// border: 1px solid hotpink;
 
 			.btn {
 				margin: 16rpx 0;
@@ -261,14 +345,16 @@
 			}
 
 			/deep/ .u-form {
-				padding: 0 8rpx;
+				// padding: 0 8rpx;
+				// margin: 0 30rpx;
 			}
 
-			/deep/ .u-form-item__body {
-				padding: 12rpx 0;
-			}
+			// /deep/ .u-form-item__body {
+			// 	padding: 12rpx 0;
+			// }
 
 			.notice {
+				margin:0 8rpx;
 				.read_tip {
 					margin-left: 12rpx;
 					width: 600rpx;
@@ -287,6 +373,34 @@
 			}
 
 		}
+
+		/deep/ .u-form {
+			// padding: 0 8rpx;
+			margin: 0 8rpx;
+		}
+
+		// /deep/ .u-form-item__body {
+		// 	padding: 12rpx 0;
+		// }
+
+		.notice {
+			.read_tip {
+				margin-left: 12rpx;
+				width: 600rpx;
+				height: 34rpx;
+				font-size: 24rpx;
+				font-family: PingFangSC-Regular, PingFang SC;
+				font-weight: 400;
+				color: #414141;
+				line-height: 34rpx;
+
+				.blue {
+					color: #4579E6;
+					cursor: pointer;
+				}
+			}
+		}
+
 
 		.remark {
 			// margin: 0rpx 52rpx 20rpx 52rpx;
@@ -313,5 +427,21 @@
 		height: 24rpx;
 		background: url(../../static/img/noChecked.png) no-repeat;
 		background-size: cover;
+	}
+
+	.formbox {
+		width: 750rpx;
+
+		/deep/ .u-form-item__body__right {
+			width: 323px;
+			height: 44px;
+			border-radius: 8px;
+			border: 1px solid #C2C1C1;
+
+		}
+
+		/deep/ .u-border {
+			border: none;
+		}
 	}
 </style>
