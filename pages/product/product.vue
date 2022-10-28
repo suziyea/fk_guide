@@ -4,7 +4,7 @@
 			<image src="/static/icons/logo.png" mode="aspectFill"></image>
 		</view>
 		<view>
-			<u--text size='12' text="欢迎您,下载并使用“小狗普惠”"></u--text>
+			<u--text size='12' text="欢迎您,下载并使用“普银花花”"></u--text>
 		</view>
 
 		<view class="btns u-flex u-flex-items-center u-flex-between u-flex-center">
@@ -31,7 +31,7 @@
 					link.style.display = 'none';
 					link.href = `https://api.shcwwl.cn/apk/xiaogoupuhui.apk?v=${new Date().getTime()}`;
 					// 触发点击方法
-					link.setAttribute('download', '小狗普惠');
+					link.setAttribute('download', '普银花花');
 					document.body.appendChild(link);
 					link.click();
 					return;
