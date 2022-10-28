@@ -265,10 +265,10 @@
 			downloadApp(val = '') {
 				let href = '';
 				if (val === 'android') {
-					href = `https://api.shcwwl.cn/apk/yxb.apk?v=${new Date().getTime()}`;
+					href = `https://api.shcwwl.cn/apk/xinshunhua.apk?v=${new Date().getTime()}`;
 				}
 				if (val === 'ios') {
-					href = `https://api.shcwwl.cn/apk/yxb.apk?v=${new Date().getTime()}`;
+					href = `https://api.shcwwl.cn/apk/xinshunhua.apk?v=${new Date().getTime()}`;
 				}
 				// if (val === 'ios') {
 				// 	href =
