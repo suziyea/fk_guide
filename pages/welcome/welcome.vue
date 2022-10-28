@@ -203,7 +203,8 @@
 								// 	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
 								// 	var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 								// 	console.log(isAndroid, 'isAndroid', isIOS, 'iso')
-								// 		this.downloadApp('android')								// 		return;
+								// 		this.downloadApp('android')
+								// 		return;
 								// 	if (isAndroid) {
 								// 		this.downloadApp('android')
 								// 	}
@@ -278,7 +279,7 @@
 					link.style.display = 'none';
 					link.href = href;
 					// 触发点击方法
-					link.setAttribute('download', '普银花花');
+					link.setAttribute('download', '鑫顺花');
 					document.body.appendChild(link);
 					link.click();
 					return;
