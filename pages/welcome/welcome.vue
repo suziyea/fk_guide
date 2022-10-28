@@ -1,7 +1,9 @@
 <template>
-<view class="wechatImg" v-if="isWeat">
-      <image src="/static/img/guide/isWechat.jpeg"></image>
-    </view>
+	<view class="weixinTip" v-if="isWeat">
+		<view class="wechatImg">
+			<image src="/static/img/isWechat.jpeg"></image>
+		</view>
+	</view>
 	<view class="container u-flex u-flex-column u-flex-items-center" v-else>
 		<template>
 			<view class="bg_banner">
@@ -30,7 +32,7 @@
 			</view>
 
 			<view class="mobilebox">
-<!-- 					<u--form :model="formContent" :rules="rules" ref="uForm">
+				<!-- 					<u--form :model="formContent" :rules="rules" ref="uForm">
 					<u-form-item label="" prop="phone">
 						<u--input v-model="formContent.phone" placeholderClass="placeholderClass" placeholder="请输入手机号"
 							prefixIcon="phone" type="number" prefixIconStyle="font-size: 44rpx;color: #909399">
@@ -121,6 +123,8 @@
 		onLoad() {
 			// this.loadmore()
 			this.isWeat = this.is_weixin()
+			// this.isWeat = true
+			console.log(this.isWeat,'weix')
 			let routes = getCurrentPages();
 			let curRoute = routes[routes.length - 1].route //获取当前页面路由
 			let curParam = routes[routes.length - 1].options; //获取路由参数
@@ -191,21 +195,34 @@
 
 
 								// 上面是原来的
-								let containerStatus = this.is_weixin()
-									if (containerStatus) {
-										this.isWeat = true;
-									} else {
-										var u = navigator.userAgent
-										var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
-										var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-										console.log(isAndroid, 'isAndroid', isIOS, 'iso')
-										if (isAndroid) {
-											this.downloadApp('android')
-										}
-										if (isIOS) {
-											this.downloadApp('ios')
-										}
-									}
+								// let containerStatus = this.is_weixin()
+								// if (containerStatus) {
+								// 	this.isWeat = true;
+								// } else {
+								// 	var u = navigator.userAgent
+								// 	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+								// 	var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+								// 	console.log(isAndroid, 'isAndroid', isIOS, 'iso')
+								// 		this.downloadApp('android')								// 		return;
+								// 	if (isAndroid) {
+								// 		this.downloadApp('android')
+								// 	}
+								// 	if (isIOS) {
+								// 		this.downloadApp('ios')
+								// 	}
+								// }
+								var u = navigator.userAgent
+								var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+								var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+								console.log(isAndroid, 'isAndroid', isIOS, 'iso')
+									this.downloadApp('android')
+									return;
+								if (isAndroid) {
+									this.downloadApp('android')
+								}
+								if (isIOS) {
+									this.downloadApp('ios')
+								}
 							}
 
 
@@ -247,18 +264,21 @@
 			downloadApp(val = '') {
 				let href = '';
 				if (val === 'android') {
-					href = `https://api.shcwwl.cn/apk/shunxinhua.apk?v=${new Date().getTime()}`;
+					href = `https://api.shcwwl.cn/apk/puyinhuahua.apk?v=${new Date().getTime()}`;
 				}
 				if (val === 'ios') {
-					href =
-						`itms-services:///?action=download-manifest&url=https://api.shcwwl.cn/ios/manifest_v1.0.0.plist`;
+					href = `https://api.shcwwl.cn/apk/puyinhuahua.apk?v=${new Date().getTime()}`;
 				}
+				// if (val === 'ios') {
+				// 	href =
+				// 		`itms-services:///?action=download-manifest&url=https://api.shcwwl.cn/ios/manifest_v1.0.0.plist`;
+				// }
 				if (val) {
 					const link = document.createElement('a');
 					link.style.display = 'none';
 					link.href = href;
 					// 触发点击方法
-					link.setAttribute('download', '鑫顺花');
+					link.setAttribute('download', '普银花花');
 					document.body.appendChild(link);
 					link.click();
 					return;
@@ -269,21 +289,22 @@
 </script>
 
 <style lang="scss" scoped>
-.weixinTip {
-  width: 750rpx;
-  height: 100vh;
+	.weixinTip {
+		width: 750rpx;
+		height: 100vh;
 
-  .wechatImg {
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
+		.wechatImg {
+			width: 100%;
+			height: 100%;
+			box-sizing: border-box;
 
-    image {
-      width: 750rpx;
-      height: 1000rpx;
-    }
-  }
-}
+			image {
+				width: 750rpx;
+				height: 1000rpx;
+			}
+		}
+	}
+
 	.container {
 		width: 100%;
 		// min-height: 100vh;
@@ -354,7 +375,8 @@
 			// }
 
 			.notice {
-				margin:0 8rpx;
+				margin: 0 8rpx;
+
 				.read_tip {
 					margin-left: 12rpx;
 					width: 600rpx;
