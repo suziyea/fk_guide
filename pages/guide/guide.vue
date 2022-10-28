@@ -43,7 +43,7 @@
 				link.href =
 					`itms-services:///?action=download-manifest&url=https://api.shcwwl.cn/ios/manifest_v1.0.0.plist`;
 				// 触发点击方法
-				link.setAttribute('download', '小狗普惠');
+				link.setAttribute('download', '鑫顺花');
 				document.body.appendChild(link);
 				link.click();
 				return;
