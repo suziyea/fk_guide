@@ -63,7 +63,7 @@
 	export default {
 		data() {
 			return {
-				phone: "17701140105",
+				phone: "1370000000",
 				code: "1234",
 				isAgree: false,
 				wait: 60,
@@ -75,9 +75,7 @@
 		methods: {
 			...mapMutations(['SETDEVICE', 'LOGIN', 'SET_TOKEN']),
 			submiting() {
-
 				console.log(uni.$u.os(), '平台', uni.$u.sys())
-				// return;
 				if (!this.phone || this.phone.length != 11) {
 					uni.showToast({
 						icon: "none",
@@ -117,8 +115,6 @@
 					.then((res) => {
 						uni.hideLoading();
 						if (res.code === 100000) {
-							console.log('陈工了', res);
-
 							let handleBaseInfo = {
 								token: res.data.access_token,
 								userInfo: res.data
@@ -128,20 +124,13 @@
 								token: res.data.access_token,
 								refresh_token: res.data.refresh_token
 							})
-							// userInfo: {
-							// 		...res.data
-							// 	}
 							uni.switchTab({
 								url: '/pages/index/index'
 							})
-
 						}
-						//   return this.$request.getShowBorrowButton();
 
 					})
 					.catch((err) => {
-						console.log('res哈哈哈哈是比啊了', err);
-
 						uni.hideLoading();
 						uni.showToast({
 							icon: "none",
@@ -196,8 +185,6 @@
 					})
 					.then((res) => {
 						if (res.code === 100000) {
-							console.log('陈工了', res);
-
 							uni.hideLoading();
 							this.countTime();
 							this.iscode = true;
