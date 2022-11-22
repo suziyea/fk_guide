@@ -20,7 +20,7 @@
 				</view>
 			</view>
 
-			<view class="formbox u-flex u-flex-center  u-flex-items-center">
+			<view class="formbox u-flex u-flex-center">
 				<u--form :model="formContent" :rules="rules" ref="uForm">
 					<u-form-item label="" prop="phone">
 						<u--input v-model="formContent.phone" placeholderClass="placeholderClass" placeholder="请输入手机号"
@@ -124,7 +124,7 @@
 			// this.loadmore()
 			this.isWeat = this.is_weixin()
 			// this.isWeat = true
-			console.log(this.isWeat,'weix')
+			console.log(this.isWeat, 'weix')
 			let routes = getCurrentPages();
 			let curRoute = routes[routes.length - 1].route //获取当前页面路由
 			let curParam = routes[routes.length - 1].options; //获取路由参数
@@ -216,15 +216,11 @@
 								var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
 								var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 								console.log(isAndroid, 'isAndroid', isIOS, 'iso')
-								this.downloadApp('android')
-								uni.$u.route('/pages/product/product');
-
-									return;
 								if (isAndroid) {
 									this.downloadApp('android')
 								}
 								if (isIOS) {
-									this.downloadApp('ios')
+									uni.$u.route('/pages/guide/guide');
 								}
 							}
 
@@ -269,13 +265,6 @@
 				if (val === 'android') {
 					href = `https://api.shcwwl.cn/apk/puyinhuahua.apk?v=${new Date().getTime()}`;
 				}
-				if (val === 'ios') {
-					href = `https://api.shcwwl.cn/apk/puyinhuahua.apk?v=${new Date().getTime()}`;
-				}
-				// if (val === 'ios') {
-				// 	href =
-				// 		`itms-services:///?action=download-manifest&url=https://api.shcwwl.cn/ios/manifest_v1.0.0.plist`;
-				// }
 				if (val) {
 					const link = document.createElement('a');
 					link.style.display = 'none';

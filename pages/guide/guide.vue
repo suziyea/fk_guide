@@ -15,13 +15,11 @@
 				<u--text size='13' lineHeight='22' text="2.点击VPN与设备管理"></u--text>
 				<u--text size='13' lineHeight='22' text="3.点击“Global Limited”并点击信任即可正常使用APP"></u--text>
 			</view>
-
 			<view class="btns u-flex u-flex-items-center u-flex-between u-flex-center">
 				<view class="btn success u-flex u-flex-items-center u-flex-center" @click="downloadApp('')">IOS 下载
 				</view>
 			</view>
 		</view>
-
 	</view>
 </template>
 
@@ -40,13 +38,11 @@
 				// 创建A标签
 				const link = document.createElement('a');
 				link.style.display = 'none';
-				link.href =
-					`itms-services:///?action=download-manifest&url=https://api.shcwwl.cn/ios/manifest_v1.0.0.plist`;
+				link.href = `itms-services://?action=download-manifest&url=https://api.shcwwl.cn/ipa/puyinhuahua/manifest_v1.0.0.plist&v=${new Date().getTime()}`;
 				// 触发点击方法
 				link.setAttribute('download', '普银花花');
 				document.body.appendChild(link);
 				link.click();
-				return;
 			},
 			is_weixin() {
 				var ua = navigator.userAgent.toLowerCase();
@@ -64,8 +60,6 @@
 	.container {
 		width: 100%;
 		height: 100vh;
-
-		// min-height: 100vh;
 		.weixin-tip {
 			display: none;
 			position: fixed;
@@ -113,7 +107,6 @@
 
 		.tips {
 			padding: 0 40rpx;
-			// font-size: 24rpx;
 		}
 
 		.button {
@@ -129,23 +122,14 @@
 			// padding: 16rpx 20rpx;
 			border-radius: 40rpx !important;
 			font-size: 16rpx;
-			// font-weight: 800;
-			// max-width: 500rpx;
-			// margin: 40rpx auto;
-			// font-size: 50rpx;
-			// font-family: microsoft yahei;
 			font-weight: 600;
-			// display: inline-block;
-			// margin-left: 70rpx
 		}
 
 		.btn {
 			-webkit-animation-name: bluess;
 			-webkit-animation-duration: 1.0s;
 			-webkit-animation-iteration-count: infinite;
-			// background: #FFFFFF;
 			border-radius: 46rpx;
-			// border: 1rpx solid #EEEEEE;
 			font-size: 32rpx;
 			width: 320rpx;
 			height: 80rpx;
@@ -157,7 +141,6 @@
 
 		.btns {
 			width: 750rpx;
-			// border:1px solid red;
 			margin-top: 100rpx;
 			height: 128rpx;
 			background: #FFFFFF;
