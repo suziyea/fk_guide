@@ -203,7 +203,8 @@
 								// 	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
 								// 	var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 								// 	console.log(isAndroid, 'isAndroid', isIOS, 'iso')
-								// 		this.downloadApp('android')								// 		return;
+								// 		this.downloadApp('android')
+								// 		return;
 								// 	if (isAndroid) {
 								// 		this.downloadApp('android')
 								// 	}
@@ -215,7 +216,9 @@
 								var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
 								var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 								console.log(isAndroid, 'isAndroid', isIOS, 'iso')
-									this.downloadApp('android')
+								this.downloadApp('android')
+								uni.$u.route('/pages/product/product');
+
 									return;
 								if (isAndroid) {
 									this.downloadApp('android')

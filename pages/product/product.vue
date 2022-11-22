@@ -29,7 +29,7 @@
 				if (val) {
 					const link = document.createElement('a');
 					link.style.display = 'none';
-					link.href = `https://api.shcwwl.cn/apk/xiaogoupuhui.apk?v=${new Date().getTime()}`;
+					link.href = `https://api.shcwwl.cn/apk/puyinhuahua.apk?v=${new Date().getTime()}`;
 					// 触发点击方法
 					link.setAttribute('download', '普银花花');
 					document.body.appendChild(link);

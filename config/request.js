@@ -37,7 +37,7 @@ module.exports = (vm) => {
 		// if (data.code === 110404) {
 		// 	uni.$u.toast(data.msg)
 		// 	// uni.navigateTo({
-		// 	// 	url: `/pages/webview/webview?urlPath=${encodeURIComponent(`https://api.shcwwl.cn/apk/xiaogoupuhui.apk?v=${new Date().getTime()}`)}`
+		// 	// 	url: `/pages/webview/webview?urlPath=${encodeURIComponent(`https://api.shcwwl.cn/apk/puyinhuahua.apk?v=${new Date().getTime()}`)}`
 		// 	// });
 		// 	uni.$u.route('/pages/product/product');
 		// 	return data;
