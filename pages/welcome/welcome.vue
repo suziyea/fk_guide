@@ -74,7 +74,7 @@
 				</text>
 				<navigator url='/pages/webview/webview?urlPath=https://beian.miit.gov.cn/#/Integrated/index'>
 					<text @click="jumpCompany">
-						{{`沪ICP 备2021036878号-1`}}
+						{{`冀ICP备2022021544号-1`}}
 					</text>
 				</navigator>
 
