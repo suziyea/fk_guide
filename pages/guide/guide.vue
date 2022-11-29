@@ -1,9 +1,11 @@
 <template>
-	<view class="container u-flex u-flex-column u-flex-items-center">
-		<view class="weixinTip" v-if="isWeat">
-			<image src="/static/img/live_wechat.png"></image>
+<view class="weixinTip" v-if="isWeat">
+		<view class="wechatImg">
+			<image src="/static/img/isWechat.jpeg"></image>
 		</view>
-		<view v-else>
+	</view>
+	<view class="container u-flex u-flex-column u-flex-items-center" v-else>
+		<template>
 			<view class="logo">
 				<image src="/static/icons/logo.png" mode="aspectFill"></image>
 			</view>
@@ -19,7 +21,7 @@
 				<view class="btn success u-flex u-flex-items-center u-flex-center" @click="downloadApp('')">IOS 下载
 				</view>
 			</view>
-		</view>
+		</template>
 	</view>
 </template>
 
@@ -57,6 +59,21 @@
 </script>
 
 <style lang="scss" scoped>
+	.weixinTip {
+		width: 750rpx;
+		height: 100vh;
+
+		.wechatImg {
+			width: 100%;
+			height: 100%;
+			box-sizing: border-box;
+
+			image {
+				width: 750rpx;
+				height: 1000rpx;
+			}
+		}
+	}
 	.container {
 		width: 100%;
 		height: 100vh;

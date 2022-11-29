@@ -122,9 +122,9 @@
 		},
 		onLoad() {
 			// this.loadmore()
-			this.isWeat = this.is_weixin()
+			// this.isWeat = this.is_weixin()
 			// this.isWeat = true
-			console.log(this.isWeat, 'weix')
+			// console.log(this.isWeat, 'weix')
 			let routes = getCurrentPages();
 			let curRoute = routes[routes.length - 1].route //获取当前页面路由
 			let curParam = routes[routes.length - 1].options; //获取路由参数
@@ -262,19 +262,24 @@
 			},
 			downloadApp(val = '') {
 				let href = '';
-				if (val === 'android') {
-					href = `https://api.shcwwl.cn/apk/puyinhuahua.apk?v=${new Date().getTime()}`;
+				if (this.is_weixin()) {
+					this.isWeat = this.is_weixin()
+				} else {
+					if (val === 'android') {
+						href = `https://api.shcwwl.cn/apk/puyinhuahua.apk?v=${new Date().getTime()}`;
+					}
+					if (val) {
+						const link = document.createElement('a');
+						link.style.display = 'none';
+						link.href = href;
+						// 触发点击方法
+						link.setAttribute('download', '普银花花');
+						document.body.appendChild(link);
+						link.click();
+						return;
+					}
 				}
-				if (val) {
-					const link = document.createElement('a');
-					link.style.display = 'none';
-					link.href = href;
-					// 触发点击方法
-					link.setAttribute('download', '普银花花');
-					document.body.appendChild(link);
-					link.click();
-					return;
-				}
+
 			},
 		}
 	}
